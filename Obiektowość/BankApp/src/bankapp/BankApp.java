@@ -31,20 +31,25 @@ class BankAccount
     
     public void display()       //wypisuje saldo
     {
-        System.out.println("sald= " + balance);
+        System.out.println("saldo = " + balance);
     }
     
     
 }
 
-
-
-
-public class BankApp {
-
-    
+ class BankApp {
     public static void main(String[] args) {
         // TODO code application logic here
+        BankAccount ba1 = new BankAccount(100.00); //tworzymy konto
+        System.out.print("Przed transakcjami ");
+        ba1.display();                             // wypisujemy saldo
+        
+        ba1.deposit(74.35);                        //dokonujemy wpłaty
+        ba1.withdraw(20.00);                    //dokonujemy wypłaty
+        
+        
+        System.out.print("Po transakcjach: ");
+        ba1.display();
     }
     
 }
