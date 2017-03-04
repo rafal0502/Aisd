@@ -49,9 +49,22 @@ public class LowArray {
         arr.setElem(6,11);
         arr.setElem(7,00);
         arr.setElem(8,66);
-        arr.setElem(9,33);          //teraz w tabliy 10 elementow
+        arr.setElem(9,33);         
+        nElems= 10;                          //teraz w tabliy 10 elementow
         
+        for(j=0; j<nElems; j++)             //wyświetlamy elementy
+            System.out.print(arr.getElem(j) + " ");
+        System.out.println(" ");
         
+        int searchKey = 26;         //szukany element
+        for(j=0; j<nElems; j++)         //dla każdego elementu...
+            if(arr.getElem(j) == searchKey)     //czy znaleziono
+                break;
+        if(j==nElems)                   //nie
+            System.out.println("Nie znaleziono " + searchKey);
+        else                            //tak
+            System.out.println("Znaleziono " + searchKey);
     }
+    
     
 }
