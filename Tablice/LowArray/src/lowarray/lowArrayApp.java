@@ -31,7 +31,7 @@ public class LowArray {
     
 }
 
-    public class lowArrayApp
+   class LowArrayApp
     {
     public static void main(String[] args) {
         LowArray arr;           //referencja do klasy LowArray
@@ -64,7 +64,18 @@ public class LowArray {
             System.out.println("Nie znaleziono " + searchKey);
         else                            //tak
             System.out.println("Znaleziono " + searchKey);
-    }
     
-    
+                                            //usuwamy element 55
+          for(j=0; j< nElems; j++)          //wyszukiwanie
+            if(arr.getElem(j) ==55)
+                break;
+          for(int k=j; k<nElems; k++)           //przesuwamy pozostałe elementy
+              arr.setElem(k, (int) arr.getElem(k+1));
+          nElems--;                            //zmniejszamy liczbę elementów
+          
+          
+          for(j=0; j<nElems; j++)           //wyświetlamy elementy
+              System.out.print(arr.getElem(j) + " ");   
+          System.out.println();
+    }      
 }
