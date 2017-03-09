@@ -63,6 +63,14 @@ class HighArray
          System.out.print(a[j] + " ");
      System.out.println("");
     }
+    
+    public long getMax()
+    {
+        if(nElems == 0)
+            return -1;
+        else
+            return nElems-1;
+    }
 }
 /********************************************/
 
@@ -102,6 +110,8 @@ public class HighArrayApp {
         
         
         arr.display();          //wypisujemy elementy ponownie
+        
+        System.out.println("Największy klucz w tablicy to (jeśli pusta : -1): " + arr.getMax());
         
     }
     
