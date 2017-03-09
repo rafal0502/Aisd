@@ -66,10 +66,22 @@ class HighArray
     
     public long getMax()
     {
-        if(nElems == 0)
-            return -1;
-        else
-            return nElems-1;
+        long max = a[0];
+        for(long x:a)
+        {
+            if (x>max)
+                max = x;
+        }
+        return max;    
+    }
+    
+    public boolean removeMax()
+    {
+        long max = getMax();
+        if(delete(max))
+            return true;
+        else 
+            return false;
     }
 }
 /********************************************/
@@ -108,11 +120,12 @@ public class HighArrayApp {
         arr.delete(55);
         arr.delete(99);
         
-        
+        System.out.println("Największy element w tablicy  to: " + arr.getMax());
         arr.display();          //wypisujemy elementy ponownie
-        
-        System.out.println("Największy klucz w tablicy to (jeśli pusta : -1): " + arr.getMax());
-        
+
+        System.out.println("Usunięcie klucza o największej wartości: ");
+        arr.removeMax();
+        arr.display();
     }
     
 }
