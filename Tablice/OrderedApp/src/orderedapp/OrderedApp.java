@@ -64,6 +64,39 @@ class OrdArray{
     nElems++;           //zwiekszamy licznik elementów
     }    
     
+    
+     public int find2(long searchKey)
+    {
+        int lowerBound = 0;         //ograniczenie dolne
+        int upperBound = nElems-1;  //ograniczenie górne
+        int curIn;                  //aktualnie sprawdzany indeks
+              
+        while(true){
+            curIn =(lowerBound + upperBound)/2;
+            if(curIn==nElems-1)
+                return curIn+1;
+            else if(curIn==0)
+                return curIn;
+            else if(a[curIn]<searchKey && a[curIn+1]>=searchKey)
+                    return curIn+1;
+            else if(a[curIn]<searchKey)  
+                    lowerBound = curIn+1;   //jest w górnej połowie
+            else if(a[curIn]>searchKey)
+                    upperBound = curIn-1;   //jest w dolnej połowie          
+            }
+           
+    }
+    
+
+    public void insert2(long value)
+    {
+    int j=find2(value);
+    for(int k=nElems; k>j; k--) //przesuwmay większe elementy
+        a[k] = a[k-1];
+    a[j]= value;        //wstawiamy
+    nElems++;           //zwiekszamy licznik elementów
+    }
+      
     //tu już używamy binarnego podejścia 
     public boolean delete(long value)
     {
@@ -126,6 +159,16 @@ public class OrderedApp {
         
         arr.display();          //wypisujemy zawartość tablicy
         
+        System.out.println("Testowanie wstawianie z wyszukiwaniem binarnym: ");
+        arr.insert2(34258);
+        arr.insert2(25);
+        arr.insert2(1);
+        arr.insert2(321);
+        arr.insert2(24);
+        arr.insert2(25);
+        arr.insert2(76);
+        arr.insert2(0);
+        arr.display();     
     }
     
 }
