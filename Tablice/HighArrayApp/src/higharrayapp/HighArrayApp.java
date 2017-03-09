@@ -83,6 +83,14 @@ class HighArray
         else 
             return false;
     }
+    
+    public boolean nonEmpty()
+    {
+        if (nElems != 0)
+            return true;
+        else
+            return false;
+    }
 }
 /********************************************/
 
@@ -126,6 +134,15 @@ public class HighArrayApp {
         System.out.println("Usunięcie klucza o największej wartości: ");
         arr.removeMax();
         arr.display();
+        
+        HighArray arr2 = new HighArray(100);
+        while(arr.nonEmpty())
+        {
+        arr2.insert(arr.getMax());
+        arr.removeMax();
+        }
+        System.out.println("Posortowana tablica: ");
+        arr2.display();
     }
     
 }
