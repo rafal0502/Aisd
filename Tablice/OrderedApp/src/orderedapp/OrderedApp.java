@@ -5,11 +5,13 @@
  */
 package orderedapp;
 
+
 /**
  *
  * @author rafal
  */
-class OrdArray{
+class OrdArray
+{
     private long[] a;   //referencja do tablicy
     private int nElems; //liczba elementów w tablicy
     
@@ -19,6 +21,7 @@ class OrdArray{
         nElems = 0;
     }
     
+  
     public int size()
     {
         return nElems;
@@ -118,9 +121,47 @@ class OrdArray{
         System.out.print(a[j] + " ");   //...wypisujemy jego wartość
     System.out.println("");
     }
+    
+    
+    public void merge(OrdArray tab)
+    {
+        int i=0;
+        int j=0;
+        int lena = a.length;
+        int lentab = tab.a.length;
+        int lenc = lena + lentab;
+        OrdArray c = new OrdArray(lenc);
+        while(i !=lena || j!=lentab){
+        if(a[i] <= tab.a[j] && i<lena)
+        {
+            c.insert(a[i]);
+            i++;
+        }
+        else if(tab.a[j] < a[i] && j<lentab)
+        {
+            c.insert(tab.a[j]);
+            j++;
+        }
+        if(i==lena)
+        {
+            for(;j<tab.nElems;j++)
+            {
+                c.insert(tab.a[j]);
+            }
+                
+        }
+        else if(j==lentab)
+        {
+            for(;i<nElems;i++)
+            {
+                c.insert(a[i]);
+            }           
+        }
+        }
+        c.display();
+    }
+
 }
-
-
 
 public class OrderedApp {
 
@@ -169,6 +210,35 @@ public class OrderedApp {
         arr.insert2(76);
         arr.insert2(0);
         arr.display();     
+        
+       
+        OrdArray b;               //referencja do tablicy
+        b = new OrdArray(5);//tworzymy tablice
+        
+        
+        OrdArray a;               //referencja do tablicy
+        a = new OrdArray(5);//tworzymy tablice
+        
+        a.insert(48);
+        a.insert(5);
+        a.insert(12);
+        a.insert(31);
+        a.insert(4);
+        b.insert(58);
+        b.insert(2);
+        b.insert(4);
+        b.insert(21);
+        b.insert(41);
+        
+        
+        a.display();
+        b.display();
+        System.out.println("Merge ");
+        a.merge(b);
+        
+        
+        
     }
     
 }
+
