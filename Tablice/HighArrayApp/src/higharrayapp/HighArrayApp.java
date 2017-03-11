@@ -42,20 +42,19 @@ class HighArray
     
     public boolean delete(long value)
     {
-        int j;
-        for(j=0;j<nElems; j++)          //szukamy elementu
-            if(value == a[j])
-                break;
-        if (j == nElems)                //nie znaleźliśmy
-            return false;
-        else 
-        {
-            for(int k=j; k<nElems; k++) //przesuwamy pozostałe elementy
-                a[k] = a[k+1];
+        int j=0;
+        while(j<nElems){          //szukamy elementu
+            if(value == a[j]){
+              for(int k=j; k<nElems; k++) //przesuwamy pozostałe elementy
+              a[k] = a[k+1];
             nElems--;
-            return true;
-        }    
-    }   //koniec delete()
+            }
+            if(j== nElems-1)
+              return true;
+            j++;
+        }          
+        return false;
+    }
     
     public void display()           //wypisuje zawartość tablicy
     {
@@ -91,6 +90,29 @@ class HighArray
         else
             return false;
     }
+    
+    
+    public void noDups()
+    { 
+        for (int x=0;x<nElems;x++)
+        {
+            long key =a[x];
+            int z=x+1;
+            for(;z<nElems;z++)
+            { 
+                if(a[z]==key && key!=-1)
+                {
+                a[z]=-1;
+                }
+            }
+        }
+         for(long y:a)
+            {
+                if(y==-1)
+                    delete(y);
+            }
+        display();
+    }
 }
 /********************************************/
 
@@ -112,6 +134,9 @@ public class HighArrayApp {
         arr.insert(88);
         arr.insert(11);
         arr.insert(00);
+        arr.insert(22);
+        arr.insert(99);
+        arr.insert(22);
         arr.insert(66);
         arr.insert(33);
         
@@ -143,6 +168,26 @@ public class HighArrayApp {
         }
         System.out.println("Posortowana tablica: ");
         arr2.display();
+        
+        
+        
+        HighArray arr3;          //referencja do tablicy
+        arr3 = new HighArray(maxSize);   //tworzymy tablicę
+       
+        arr3.insert(1);
+        arr3.insert(5);
+        arr3.insert(3);
+        arr3.insert(5);
+        arr3.insert(5);
+        arr3.insert(2);
+        arr3.insert(6);
+        arr3.insert(6);
+        arr3.insert(2);
+        arr3.insert(6);
+        System.out.println("with Dups: ");
+        arr3.display();
+        System.out.println("No dups");
+        arr3.noDups();
     }
     
 }
