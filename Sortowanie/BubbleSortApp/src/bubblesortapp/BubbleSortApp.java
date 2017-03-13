@@ -38,11 +38,23 @@ class ArrayBub
     public void bubbleSort()
     {
         int out, in;
-        
-        for(out=nElems-1; out>1; out--) //pętla zewnętrzna (malejąca)
+        int counter = 1;
+        for(out=nElems-1; out>counter; out--){ //pętla zewnętrzna (malejąca)
             for(in=0;in<out;in++)       //pętla wewnętrzna (rosnąca)
                 if( a[in] > a[in+1])    //zła kolejność
                     swap(in,in+1);
+            int inner = out-1;      //pętla dwukierunkowa-
+                                    //indeks in przesuwa najwieksza wartosc
+                                    //na prawo,ale kiedy osiagnie wartosc out
+                                    //zmieni kierunek i bedzie przesuwal najmniej
+                                    //sza wartosc na lewo
+            for(;inner>0;inner--)
+                if(a[inner] < a[inner-1])
+                    swap(inner,inner-1);
+                    counter = inner;
+        }
+        
+        
     }
     
     public void swap(int one, int two)
