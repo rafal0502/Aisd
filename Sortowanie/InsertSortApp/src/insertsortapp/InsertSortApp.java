@@ -57,10 +57,17 @@ class ArrayIns
           
     }
     
+    public float median()
+    {
+        insertionSort();
+        if(nElems % 2 == 1)
+        return a[nElems/2];
+        else
+        return (float)(a[nElems/2-1] + a[nElems/2])/2;
+    }
+    
+    
 }
-
-
-
 
 
 public class InsertSortApp {
@@ -84,12 +91,21 @@ public class InsertSortApp {
         arr.insert(00);
         arr.insert(66);
         arr.insert(33);
+        arr.insert(47);
         
         arr.display();                  //wypisujemy
         
         arr.insertionSort();            //sortujemy je
         
         arr.display();              //znowu wypisujemy
+        
+        
+        
+        System.out.println("Mediana z tablicy wynosi: ");
+        System.out.println(arr.median());
     }
+    
+    
+    
     
 }
